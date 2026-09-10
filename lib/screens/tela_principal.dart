@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'cadastros/cadastro_indicador.dart';
+import 'cadastros/cadastro_usuario.dart';
 
 class TelaPrincipal extends StatefulWidget {
   const TelaPrincipal({super.key});
@@ -80,9 +82,21 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
             },
           ),
 
-          const ListTile(
-            leading: Icon(Icons.chevron_right),
-            title: Text('Funcionário'),
+          // USUÁRIO
+          ListTile(
+            leading: const Icon(Icons.chevron_right),
+            title: const Text('Usuário'),
+            onTap: () {
+              Navigator.pop(context);
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      const CadastroUsuarioPage(),
+                ),
+              );
+            },
           ),
 
           const ListTile(
@@ -105,11 +119,9 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
       appBar: AppBar(
         title: const Text('Usina App'),
       ),
-
       drawer: Drawer(
         child: montarMenu(),
       ),
-
       body: const Center(
         child: Text(
           'Tela Principal',
